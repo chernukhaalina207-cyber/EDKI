@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Політика конфіденційності</title>
+    <style>
+        /* Загальні налаштування фону та тексту */
+        body {
+            /* Градієнт, де перший колір тримається довше (до 30% висоти) */
+            background: linear-gradient(to bottom, #0C1025 30%, #1F2959 65%, #273376 85%, #27357F 100%);
+            min-height: 100vh; /* Гарантує, що фон покриває весь екран */
+            color: #c8d3e0;
+            font-family: 'Montserrat', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        /* =========================================
+           HEADER (ВЕРХНІЙ БАНЕР)
+           ========================================= */
+        .site-header {
+            width: 100%;
+            padding: 30px 40px 0 40px;
+            box-sizing: border-box;
+            background-color: transparent;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-bottom: 25px; 
+        }
+
+        .logo { 
+            display: block; 
+            width: 90px; 
+            height: 90px; 
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05); 
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: contain; 
+            background: transparent;
+            border: none;
+        }
+
+        .nav {
+            display: flex;
+            gap: 40px; 
+            align-items: center;
+        }
+
+        .nav a {
+            color: rgba(255, 255, 255, 0.75); 
+            text-decoration: none;
+            font-size: 16px;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease; 
+        }
+
+        .nav a:hover {
+            color: #ffffff; 
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
+                         0 0 20px rgba(255, 255, 255, 0.4); 
+            transform: translateY(-2px); 
+        }
+
+        .header-divider {
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.3); 
+        }
+
+        /* ГАМБУРГЕР-МЕНЮ (КНОПКА) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 100; 
+        }
+
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: #ffffff;
+            border-radius: 3px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* АДАПТИВНІСТЬ ХЕДЕРА ТА ВИПАДАЮЧЕ МЕНЮ */
+        @media (max-width: 900px) {
+            .site-header {
+                padding: 20px 20px 0 20px;
+            }
+            .header-content {
+                position: relative; 
+                padding-bottom: 20px;
+                justify-content: space-between; /* Залишаємо лого і бургер по краях */
+            }
+            .logo {
+                width: 70px;
+                height: 70px;
+            }
+            .hamburger {
+                display: flex;
+            }
+
+            .nav {
+                position: absolute;
+                top: 100%; 
+                right: 0;
+                background-color: #0F1934; 
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 12px;
+                padding: 20px 30px;
+                flex-direction: column; 
+                gap: 20px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+                
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-15px);
+                transition: all 0.3s ease;
+                z-index: 99;
+            }
+
+            .nav.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0; 
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+        }
+        
+        /* ----------------------------------------------------------------- */
+
+       /* Стилі для контейнера з текстом Політики */
+        .privacy-container {
+            max-width: 800px;
+            margin: 60px auto; /* Центрування на сторінці */
+            padding: 0 20px;
+        }
+
+        .privacy-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+            line-height: 1.4;
+            color: #A1ADFF; /* Акцентний колір */
+        }
+
+        .privacy-section-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 30px;
+            margin-bottom: 8px;
+            color: #A1ADFF; /* Акцентний колір */
+        }
+
+        .privacy-text {
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-align: justify; /* Вирівнювання тексту по ширині, як на фото */
+            color: #CDCDCD; /* Основний колір тексту */
+            line-height: 1.5;
+        }
+
+        .privacy-list {
+            margin-top: 4px;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            font-size: 14px;
+            color: #CDCDCD; /* Основний колір тексту */
+            line-height: 1.5;
+        }
+
+        .privacy-list li {
+            margin-bottom: 4px;
+        }
+
+        /* Медіа-запит для комп'ютерної версії (завжди ставимо в кінці!) */
+        @media (min-width: 1024px) {
+            .privacy-container {
+                max-width: 1400px; /* Збільшена максимальна ширина для ПК */
+                width: 95%; /* Контейнер займатиме 95% ширини екрану */
+            }
+            
+            /* Збільшуємо головний заголовок на ПК */
+            .privacy-title {
+                font-size: 28px; 
+                margin-bottom: 50px; 
+            }
+
+            /* Збільшуємо підзаголовки на ПК */
+            .privacy-section-title {
+                font-size: 18px; /* Було 15px, стало 18px */
+                margin-top: 40px; 
+            }
+
+            /* Збільшуємо основний текст та списки на ПК */
+            .privacy-text, .privacy-list {
+                font-size: 16px; /* Було 14px, стало 16px */
+                line-height: 1.6; /* Робимо текст трохи "повітрянішим" для великих екранів */
+            }
+        }
+
+        /* --- ТВІЙ ФУТЕР --- */
+         /* Footer */
+        .footer-section {
+            max-width: 1200px;
+            margin: 8px auto;
+            padding: 30px 20px;
+            background-color: rgba(15, 36, 54, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            text-align: center;
+        }
+        .footer-logos {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .footer-logo {
+            height: 50px;
+            display: flex;
+            align-items: center;
+        }
+        .footer-logo img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <img src="images/logo1.png" alt="Логотип">
+            </a>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="nav" id="nav-menu">
+                <a href="#transitionSection">Про курс</a>
+                <a href="#format-section">Формат навчання</a>
+                <a href="#mentors-section">Викладачі</a>
+                <a href="#prices-section">Ціни й акції</a>
+                <a href="#reserve-section">Реєстрація</a>
+                <a href="#faq-section">FAQ</a>
+                
+                <div class="mobile-socials">
+                    <a href="https://www.tiktok.com/@pidgotovka.edki?_r=1&_d=e6m8mh09ed50jg&sec_uid=MS4wLjABAAAAGXqXA7YNQq4MFVdJJyBSWahns6QwinLNzAbNgBINC4TiQbZcdVL8UV9ubwzgdrOn&share_author_id=7604507406227538965&sharer_language=uk&source=h5_m&u_code=f2034fk9c4j5e3&timestamp=1770562620&user_id=7604507406227538965&sec_user_id=MS4wLjABAAAAGXqXA7YNQq4MFVdJJyBSWahns6QwinLNzAbNgBINC4TiQbZcdVL8UV9ubwzgdrOn&item_author_type=1&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7598792574107764501&share_link_id=e19b19a7-4c9d-44f5-944c-71f8b7341e89&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb7360&social_share_type=5&enable_checksum=1" target="_blank" rel="noopener noreferrer">
+                        <img src="images/tiktok.png" alt="TikTok">
+                    </a>
+                    <a href="https://www.instagram.com/pidgotovka.edki?igsh=MTNkM2QzOGV1bmRnZA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
+                        <img src="images/inst.png" alt="Instagram">
+                    </a>
+                    <a href="https://www.facebook.com/share/18FM22gDrw/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
+                        <img src="images/facebook.png" alt="Facebook">
+                    </a>
+                </div>
+            </nav>
+        </div>
+        <div class="header-divider"></div>
+    </header>
+    <style> 
+    /* =========================================
+           СОЦМЕРЕЖІ В МЕНЮ (Тільки мобільні)
+           ========================================= */
+        .mobile-socials {
+            display: none; /* Ховаємо на комп'ютерній версії */
+        }
+
+        @media (max-width: 900px) {
+            .mobile-socials {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 24px;
+                margin-top: 10px;
+                padding-top: 24px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1); /* Тонка лінія-розділювач */
+                width: 100%;
+            }
+            
+            .mobile-socials a {
+                padding: 0;
+            }
+
+            .mobile-socials a:hover {
+                transform: scale(1.1); /* Легке збільшення при натисканні */
+                text-shadow: none;
+            }
+
+            .mobile-socials img {
+                height: 28px; /* Розмір іконок */
+                width: auto;
+                display: block;
+            }
+        }
+    </style>
+
+    <main class="privacy-container">
+        <div class="privacy-title">
+            ПОЛІТИКА КОНФІДЕНЦІЙНОСТІ<br>
+            "ЦЕНТР ПІДГОТОВКИ ДО ЄДКІ"
+        </div>
+
+        <div class="privacy-section-title">1. ЗАГАЛЬНІ ПОЛОЖЕННЯ</div>
+        <div class="privacy-text">1.1. Ця Політика конфіденційності (тут і далі – “Політика”) встановлює порядок одержання, зберігання, обробки, використання та розкриття інформації, в тому числі персональних даних користувачів веб-сайту Центру підготовки до ЄДКІ (тут і далі – “Сайт”). Інформацію про персональні дані отримує Адміністрація Сайту від користувачів.</div>
+        <div class="privacy-text">1.2. Ми з повагою ставимося до конфіденційної інформації майбутніх правників та інших фахівців, які відвідують наш ресурс. Мета цієї Політики – проінформувати Користувача про порядок збору та обробки даних у процесі підготовки до Єдиного державного кваліфікаційного іспиту.</div>
+        <div class="privacy-text">1.3. Використовуючи будь-яку частину Сайту, Користувач автоматично надає свою згоду з умовами цієї Політики. Якщо Користувач не згоден з умовами або не досяг віку, що дозволяє укладати такі угоди, він зобов’язаний залишити Сайт.</div>
+        <div class="privacy-text">1.4. Центр підготовки до ЄДКІ не несе відповідальності за обробку даних сторонніми сервісами (наприклад, платіжними системами або платформами тестування), навіть якщо Користувач перейшов на них за посиланням з нашого Сайту.</div>
+
+        <div class="privacy-section-title">2. ПЕРСОНАЛЬНІ ДАНІ, ЩО ЗБИРАЮТЬСЯ</div>
+        <div class="privacy-text">2.1. Ми збираємо інформацію лише у випадку, якщо Користувач добровільно надав згоду на її використання (наприклад, при реєстрації на курси або підписці на новини).</div>
+        <div class="privacy-text">2.2. До персональних даних належать: прізвище, ім’я, по-батькові, адреса електронної пошти, номер телефону, інформація про навчальний заклад або курс навчання.</div>
+        <div class="privacy-text">2.3. Автоматично при відвідуванні Сайту можуть збиратися:</div>
+        <ul class="privacy-list">
+            <li>IP-адреса Користувача;</li>
+            <li>Технічна інформація про браузер та операційну систему;</li>
+            <li>Дані про параметри пошуку та тривалість перебування на сторінках підготовки.</li>
+        </ul>
+        <div class="privacy-text">2.4. Сайт використовує файли cookie для підтримки функціоналу (наприклад, збереження прогресу в тестах), персоналізації роботи та аналізу ефективності навчальних матеріалів.</div>
+
+        <div class="privacy-section-title">3. МЕТА ВИКОРИСТАННЯ ПЕРСОНАЛЬНИХ ДАНИХ</div>
+        <div class="privacy-text">3.1. Дані використовуються для забезпечення доступу до навчальних матеріалів, реєстрації на пробні тестування та виконання договірних зобов'язань щодо надання освітніх послуг.</div>
+        <div class="privacy-text">3.2. Центр використовує персональну інформацію для:</div>
+        <ul class="privacy-list">
+            <li>Надання доступу до тренажерів ЄДКІ та особистого кабінету;</li>
+            <li>Повідомлення про графік занять, нові тести та зміни в програмі іспиту;</li>
+            <li>Отримання відгуків щодо якості підготовчих курсів;</li>
+            <li>Аналізу успішності груп користувачів для вдосконалення методики викладання.</li>
+        </ul>
+        <div class="privacy-text">3.3. Користувач може в будь-який момент відмовитися від розсилки новин, натиснувши відповідне посилання в електронному листі.</div>
+
+        <div class="privacy-section-title">4. УМОВИ НАДАННЯ ДОСТУПУ ТРЕТІМ ОСОБАМ</div>
+        <div class="privacy-text">4.1. Передача персональних даних третім особам допускається лише:</div>
+        <ul class="privacy-list">
+            <li>За згодою Користувача;</li>
+            <li>Для забезпечення технічної можливості навчання (наприклад, доступ до закритої платформи тестування);</li>
+            <li>На вимогу державних органів згідно із законодавством України.</li>
+        </ul>
+        <div class="privacy-text">4.2. Розкриття даних проводиться при замовленні послуг (курсів) на Сайті виключно в обсязі, необхідному для ідентифікації студента та його доступу до занять.</div>
+
+        <div class="privacy-section-title">5. ОСОБЛИВОСТІ ЩОДО МАЛОЛІТНІХ</div>
+        <div class="privacy-text">5.1. Сайт орієнтований на студентів закладів вищої освіти. Якщо виявиться, що дитина до 14 років надала дані без згоди батьків, ми негайно видалимо таку інформацію після звернення законних представників.</div>
+
+        <div class="privacy-section-title">6. ПОРЯДОК ЗМІНИ ТА ВИДАЛЕННЯ ІНФОРМАЦІЇ</div>
+        <div class="privacy-text">6.1. Користувач має право в будь-який момент змінити свої дані в особистому кабінеті або надіслати запит на їх видалення.</div>
+        <div class="privacy-text">6.2. Видалення даних може призвести до неможливості подальшого користування навчальними сервісами (втрата доступу до куплених курсів або результатів тестів).</div>
+        <div class="privacy-text">6.3. Персональні дані зберігаються протягом терміну, необхідного для досягнення цілей підготовки до іспиту, але не довше, ніж це передбачено законом.</div>
+
+        <div class="privacy-section-title">7. ЗАХИСТ ІНФОРМАЦІЇ</div>
+        <div class="privacy-text">7.1. Ми вживаємо адміністративних та технологічних заходів безпеки для захисту ваших даних від несанкціонованого доступу.</div>
+        <div class="privacy-text">7.2. Користувач визнає, що передача даних через інтернет не може бути захищена на 100%, і Адміністрація не несе відповідальності за дії зловмисників поза межами технічних засобів Сайту.</div>
+
+        <div class="privacy-section-title">8. КОНТАКТНІ ДАНІ ТА ПОРЯДОК ЗМІН</div>
+        <div class="privacy-text">8.1. У разі виникнення питань щодо конфіденційності, Користувач може звернутися до Адміністрації через електронну пошту, вказану в розділі “Контакти”.</div>
+        <div class="privacy-text">8.2. Ми залишаємо за собою право змінювати цю Політику. Нова версія набуває чинності з моменту її публікації на цій сторінці.</div>
+        <div class="privacy-text">8.3. До відносин між Центром та Користувачем застосовується чинне законодавство України.</div>
+    </main>
+
+    <!-- Footer section -->
+<footer class="site-footer">
+    <div class="footer-left">
+        <div>© 2026 Центр підготовки до ЄДКІ</div>
+        <a href="#" class="footer-link">Політика конфіденційності</a>
+        <a href="#" class="footer-link">Договір публічної оферти</a>
+    </div>
+    <div class="footer-center">
+        <a href="mailto:centrpidgotovkidoedki@gmail.com" class="footer-link">centrpidgotovkidoedki@gmail.com</a>
+    </div>
+    <div class="footer-right">
+        <a href="https://www.tiktok.com/@pidgotovka.edki?_r=1&_d=e6m8mh09ed50jg&sec_uid=MS4wLjABAAAAGXqXA7YNQq4MFVdJJyBSWahns6QwinLNzAbNgBINC4TiQbZcdVL8UV9ubwzgdrOn&share_author_id=7604507406227538965&sharer_language=uk&source=h5_m&u_code=f2034fk9c4j5e3&timestamp=1770562620&user_id=7604507406227538965&sec_user_id=MS4wLjABAAAAGXqXA7YNQq4MFVdJJyBSWahns6QwinLNzAbNgBINC4TiQbZcdVL8UV9ubwzgdrOn&item_author_type=1&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7598792574107764501&share_link_id=e19b19a7-4c9d-44f5-944c-71f8b7341e89&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb7360&social_share_type=5&enable_checksum=1" target="_blank" rel="noopener noreferrer" class="social-link">
+            <img src="images/tiktok.png" alt="TikTok">
+        </a>
+        
+        <a href="https://www.instagram.com/pidgotovka.edki?igsh=MTNkM2QzOGV1bmRnZA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-link">
+            <img src="images/inst.png" alt="Instagram">
+        </a>
+        
+        <a href="https://www.facebook.com/share/18FM22gDrw/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-link">
+            <img src="images/facebook.png" alt="Facebook">
+        </a>
+    </div>
+</footer>
+
+<style>
+.site-footer {
+    background: #1d254d;
+    color: #c8d3e0;
+    /* add small margin so main page background shows around footer */
+    margin: 0 20px 20px;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: 'Inter', 'Roboto', Arial, sans-serif;
+    font-size: 14px;
+    border-radius: 12px; /* round corners */
+}
+.footer-left, .footer-center, .footer-right {
+    max-width: 33%;
+}
+.footer-link {
+    color: #c8d3e0;
+    text-decoration: underline;
+    display: block;
+    margin-top: 6px;
+}
+.footer-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.social-link {
+    margin-left: 16px;
+}
+.social-link img {
+    height: 24px;
+    width: auto;
+    display: block;
+}
+@media (max-width: 900px) {
+    .site-footer {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-left, .footer-center, .footer-right {
+        max-width: 100%;
+        margin: 10px 0;
+    }
+    .footer-right {
+        justify-content: center;
+    }
+    .social-link { margin: 0 8px; }
+}
+</style>
+
+    </style>
+        </div>
+        <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        // Відкриття/закриття меню при кліку на бургер
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Закривати меню автоматично, якщо користувач клікнув на якесь посилання
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
