@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Публічна оферта</title>
+    <style>
+        /* Загальні налаштування фону та тексту */
+        body {
+            /* Градієнт, де перший колір тримається довше (до 30% висоти) */
+            background: linear-gradient(to bottom, #0C1025 30%, #1F2959 65%, #273376 85%, #27357F 100%);
+            min-height: 100vh; /* Гарантує, що фон покриває весь екран */
+            color: #c8d3e0;
+            font-family: 'Montserrat', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        /* =========================================
+           HEADER (ВЕРХНІЙ БАНЕР)
+           ========================================= */
+        .site-header {
+            width: 100%;
+            padding: 30px 40px 0 40px;
+            box-sizing: border-box;
+            background-color: transparent;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-bottom: 25px; 
+        }
+
+        .logo { 
+            display: block; 
+            width: 90px; 
+            height: 90px; 
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05); 
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: contain; 
+            background: transparent;
+            border: none;
+        }
+
+        .nav {
+            display: flex;
+            gap: 40px; 
+            align-items: center;
+        }
+
+        .nav a {
+            color: rgba(255, 255, 255, 0.75); 
+            text-decoration: none;
+            font-size: 16px;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease; 
+        }
+
+        .nav a:hover {
+            color: #ffffff; 
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
+                         0 0 20px rgba(255, 255, 255, 0.4); 
+            transform: translateY(-2px); 
+        }
+
+        .header-divider {
+            max-width: 1400px;
+            margin: 0 auto;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.3); 
+        }
+
+        /* ГАМБУРГЕР-МЕНЮ (КНОПКА) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 100; 
+        }
+
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: #ffffff;
+            border-radius: 3px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* АДАПТИВНІСТЬ ХЕДЕРА ТА ВИПАДАЮЧЕ МЕНЮ */
+        @media (max-width: 900px) {
+            .site-header {
+                padding: 20px 20px 0 20px;
+            }
+            .header-content {
+                position: relative; 
+                padding-bottom: 20px;
+                justify-content: space-between;
+            }
+            .logo {
+                width: 70px;
+                height: 70px;
+            }
+            .hamburger {
+                display: flex;
+            }
+
+            .nav {
+                position: absolute;
+                top: 100%; 
+                right: 0;
+                background-color: #0F1934; 
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 12px;
+                padding: 20px 30px;
+                flex-direction: column; 
+                gap: 20px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+                
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-15px);
+                transition: all 0.3s ease;
+                z-index: 99;
+            }
+
+            .nav.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0; 
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+        }
+        
+        /* ----------------------------------------------------------------- */
+
+       /* Стилі для контейнера з текстом Оферти */
+        .privacy-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .privacy-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+            line-height: 1.4;
+            color: #A1ADFF; /* Акцентний колір */
+        }
+
+        .privacy-section-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 30px;
+            margin-bottom: 8px;
+            color: #A1ADFF; /* Акцентний колір */
+        }
+
+        .privacy-text {
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-align: justify;
+            color: #CDCDCD; /* Основний колір тексту */
+            line-height: 1.5;
+        }
+
+        .privacy-list {
+            margin-top: 4px;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            font-size: 14px;
+            color: #CDCDCD; /* Основний колір тексту */
+            line-height: 1.5;
+        }
+
+        .privacy-list li {
+            margin-bottom: 4px;
+        }
+
+        .highlight-text {
+        color: #A1ADFF; /* Твій акцентний колір */
+        font-weight: 600; /* За бажанням можна зробити текст ще й жирним */
+        }
+
+        /* Медіа-запит для комп'ютерної версії */
+        @media (min-width: 1024px) {
+            .privacy-container {
+                max-width: 1400px;
+                width: 95%;
+            }
+            
+            .privacy-title {
+                font-size: 28px; 
+                margin-bottom: 50px; 
+            }
+
+            .privacy-section-title {
+                font-size: 18px; 
+                margin-top: 40px; 
+            }
+
+            .privacy-text, .privacy-list {
+                font-size: 16px; 
+                line-height: 1.6; 
+            }
+        }
+        
+        /* =========================================
+           КНОПКА "НАЗАД НА ГОЛОВНУ"
+           ========================================= */
+        .back-link {
+            display: inline-block;
+            color: #CDCDCD;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #ffffff;
+            transform: translateX(-5px);
+        }
+
+        @media (min-width: 1024px) {
+            .back-link {
+                font-size: 16px;
+            }
+        }
+
+        /* =========================================
+           СОЦМЕРЕЖІ В МЕНЮ (Тільки мобільні)
+           ========================================= */
+        .mobile-socials {
+            display: none;
+        }
+
+        @media (max-width: 900px) {
+            .mobile-socials {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 24px;
+                margin-top: 10px;
+                padding-top: 24px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                width: 100%;
+            }
+            
+            .mobile-socials a {
+                padding: 0;
+            }
+
+            .mobile-socials a:hover {
+                transform: scale(1.1);
+                text-shadow: none;
+            }
+
+            .mobile-socials img {
+                height: 28px;
+                width: auto;
+                display: block;
+            }
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #1d254d;
+            color: #c8d3e0;
+            margin: 0 20px 20px;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            font-family: 'Inter', 'Roboto', Arial, sans-serif;
+            font-size: 14px;
+            border-radius: 12px;
+        }
+        .footer-left, .footer-center, .footer-right {
+            max-width: 33%;
+        }
+        .footer-link {
+            color: #c8d3e0;
+            text-decoration: underline;
+            display: block;
+            margin-top: 6px;
+        }
+        .footer-right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .social-link {
+            margin-left: 16px;
+        }
+        .social-link img {
+            height: 24px;
+            width: auto;
+            display: block;
+        }
+        @media (max-width: 900px) {
+            .site-footer {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-left, .footer-center, .footer-right {
+                max-width: 100%;
+                margin: 10px 0;
+            }
+            .footer-right {
+                justify-content: center;
+            }
+            .social-link { margin: 0 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <img src="images/logo1.png" alt="Логотип">
+            </a>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="nav" id="nav-menu">
+                <a href="index.html#transitionSection">Про курс</a>
+                <a href="index.html#format-section">Формат навчання</a>
+                <a href="index.html#mentors-section">Викладачі</a>
+                <a href="index.html#prices-section">Ціни й акції</a>
+                <a href="index.html#reserve-section">Реєстрація</a>
+                <a href="index.html#faq-section">FAQ</a>
+                
+                <div class="mobile-socials">
+                    <a href="https://www.tiktok.com/@pidgotovka.edki?_r=1&_d=e6m8mh09ed50jg&sec_uid=MS4wLjABAAAAGXqXA7YNQq4MFVdJJyBSWahns6QwinLNzAbNgBINC4TiQbZcdVL8UV9ubwzgdrOn&share_author_id=7604507406227538965&sharer_language=uk&source=h5_m&u_code=f2034fk9c4j5e3&timestamp=1770562620&user_id=7604507406227538965&sec_user_id=MS4wLjABAAAAGXqXA7YNQq4MFVdJJyBSWahns6QwinLNzAbNgBINC4TiQbZcdVL8UV9ubwzgdrOn&item_author_type=1&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7598792574107764501&share_link_id=e19b19a7-4c9d-44f5-944c-71f8b7341e89&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb7360&social_share_type=5&enable_checksum=1" target="_blank" rel="noopener noreferrer">
+                        <img src="images/tiktok.png" alt="TikTok">
+                    </a>
+                    <a href="https://www.instagram.com/pidgotovka.edki?igsh=MTNkM2QzOGV1bmRnZA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
+                        <img src="images/inst.png" alt="Instagram">
+                    </a>
+                    <a href="https://www.facebook.com/share/18FM22gDrw/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
+                        <img src="images/facebook.png" alt="Facebook">
+                    </a>
+                </div>
+            </nav>
+        </div>
+        <div class="header-divider"></div>
+    </header>
+
+    <main class="privacy-container">
+        <a href="index.html" class="back-link">← Назад на головну</a>
+        <div class="privacy-title">
+            ПРОПОЗИЦІЯ (ПУБЛІЧНА ОФЕРТА)
+        </div>
+    
+        <div class="privacy-text"><span class="highlight-text">Викладений нижче текст Договору є офіційною публічною пропозицією (відповідно до ст. 641 Цивільного кодексу України) Центру підготовки до ЄДКІ ННІМВ (надалі – “Виконавець”), адресованою фізичним особам (надалі – “Замовник”), на визначених Договором умовах, згідно з переліком послуг, розміщених на Сайті Виконавця та/або інформаційних ресурсах ННІМВ.</span></div>
+        <div class="privacy-text">Договір вважається укладеним в порядку ст. 642 Цивільного кодексу України і набуває сили договору приєднання з моменту здійснення Вами акцепту (оплати послуг або реєстрації), що означає повне і беззастережне прийняття Вами всіх умов Договору.</div>
+
+        <div class="privacy-section-title">1. ВИЗНАЧЕННЯ ТЕРМІНІВ</div>
+        <div class="privacy-text">1.1. Договір (оферта) – даний публічний Договір на надання консультаційних та інформаційних послуг з підготовки до ЄДКІ.</div>
+        <div class="privacy-text">1.2. Сайт – веб-сторінка Центру підготовки до ЄДКІ ННІМВ або офіційний суб-домен інституту.</div>
+        <div class="privacy-text">1.3. Акцепт оферти – повне й беззастережне прийняття Замовником умов шляхом заповнення реєстраційної форми (Анкети) та належної оплати вартості послуг.</div>
+        <div class="privacy-text">1.4. Виконавець – Центр підготовки до ЄДКІ Навчально-наукового інституту міжнародних відносин.</div>
+        <div class="privacy-text">1.5. Замовник – дієздатна фізична особа (студент, випускник), яка отримує послуги на умовах цієї Оферти.</div>
+        <div class="privacy-text">1.6. Курс – навчальна програма, спрямована на підготовку до складання Єдиного державного кваліфікаційного іспиту (ЄДКІ), що складається з лекцій, тестів, вебінарів та інших матеріалів.</div>
+        <div class="privacy-text">1.7. Контент – навчальні матеріали, тести, відеозаписи занять, презентації, розроблені фахівцями ННІМВ.</div>
+
+        <div class="privacy-section-title">2. ПРЕДМЕТ ДОГОВОРУ</div>
+        <div class="privacy-text">2.1. Виконавець бере на себе зобов’язання надати послуги з організації та забезпечення підготовки Замовника до ЄДКІ шляхом надання доступу до обраного Курсу, а Замовник зобов’язується оплатити ці послуги.</div>
+        <div class="privacy-text">2.2. Послуги за цим Договором є консультаційно-інформаційними та не є освітніми послугами в розумінні Закону України “Про освіту” (не передбачають видачу диплома про вищу освіту або присвоєння кваліфікації).</div>
+        <div class="privacy-text">2.3. Договір вважається укладеним з дати зарахування коштів на банківський рахунок Виконавця.</div>
+
+        <div class="privacy-section-title">3. ПОРЯДОК УКЛАДЕННЯ ДОГОВОРУ</div>
+        <div class="privacy-text">3.1. Оферта вважається акцептованою, якщо Замовник:</div>
+        <div class="privacy-text">3.1.1. Належним чином заповнив Анкету на сайті або через цифрові канали зв’язку;</div>
+        <div class="privacy-text">3.1.2. Оплатив послуги згідно з наданими реквізитами.</div>
+        <div class="privacy-text">3.2. Термін акцепту необмежений, проте доступ до Курсу надається відповідно до графіку навчання, встановленого Центром.</div>
+
+        <div class="privacy-section-title">4. ПОРЯДОК УЧАСТІ У НАВЧАННІ</div>
+        <div class="privacy-text">4.1. Виконавець забезпечує Замовнику доступ до онлайн-платформи, закритих груп у месенджерах або очних занять (згідно з обраним пакетом).</div>
+        <div class="privacy-text">4.2. Виконавець має право змінювати розклад або викладацький склад, попередньо повідомивши Замовника через електронні канали зв'язку.</div>
+        <div class="privacy-text">4.3. У разі пропуску заняття Замовником з причин, не залежних від Виконавця, послуга вважається наданою належним чином, а кошти за це заняття не повертаються.</div>
+        <div class="privacy-text">4.4. Доступ до відеозаписів занять надається виключно в навчальних цілях без права їх копіювання чи розповсюдження.</div>
+
+        <div class="privacy-section-title">5. ПРАВА ТА ОБОВ’ЯЗКИ СТОРІН</div>
+        <div class="privacy-text">5.1. Виконавець зобов’язаний: надати доступ до актуальних матеріалів для підготовки до ЄДКІ та консультувати Замовника щодо програми навчання.</div>
+        <div class="privacy-text">5.2. Виконавець має право: припинити доступ Замовника до матеріалів без повернення коштів у разі порушення авторських прав (передача логінів третім особам, запис екрану тощо) або неетичної поведінки.</div>
+        <div class="privacy-text">5.3. Замовник зобов’язаний: дотримуватися академічної доброчесності, не розповсюджувати навчальні матеріали та своєчасно здійснювати оплату.</div>
+
+        <div class="privacy-section-title">6. ПОРЯДОК РОЗРАХУНКІВ</div>
+        <div class="privacy-text">6.1. Вартість Курсу зазначається на Сайті або в Повідомленні про оплату.</div>
+        <div class="privacy-text">6.2. Оплата здійснюється у національній валюті України на рахунок Виконавця (або уповноваженої структури ННІМВ).</div>
+        <div class="privacy-text">6.3. Повернення коштів можливе лише до моменту офіційного старту Курсу або протягом 48 годин після першого заняття за письмовою заявою Замовника.</div>
+
+        <div class="privacy-section-title">7. ВІДПОВІДАЛЬНІСТЬ ТА ІНТЕЛЕКТУАЛЬНА ВЛАСНІСТЬ</div>
+        <div class="privacy-text">7.1. Всі права на методики навчання, тестові бази та контент належать Виконавцю. Замовнику надається обмежена ліцензія на особисте використання матеріалів.</div>
+        <div class="privacy-text">7.2. Виконавець не несе відповідальності за кінцевий результат Замовника на іспиті ЄДКІ, оскільки успішність залежить від індивідуальних здібностей та старанності студента.</div>
+        <div class="privacy-text">7.3. Сукупна відповідальність Виконавця за будь-якими претензіями не може перевищувати вартості сплачених Замовником послуг.</div>
+
+        <div class="privacy-section-title">8. ФОРС-МАЖОР</div>
+        <div class="privacy-text">8.1. Сторони звільняються від відповідальності за невиконання зобов'язань у разі настання обставин непереборної сили (військові дії, тривалі відключення електроенергії, збої в мережі Інтернет, епідемії).</div>
+
+        <div class="privacy-section-title">9. ДОДАТКОВІ УМОВИ</div>
+        <div class="privacy-text">9.1. До Договору застосовується законодавство України.</div>
+        <div class="privacy-text">9.2. Всі суперечки вирішуються шляхом переговорів. У разі неможливості досягнення згоди – у суді за місцезнаходженням Виконавця.</div>
+        <div class="privacy-text">9.3. Виконавець має право вносити зміни до тексту Оферти, які набувають чинності з моменту їх публікації на Сайті.</div>
+
+        <div class="privacy-section-title">10. РЕКВІЗИТИ</div>
+        <div class="privacy-text">Товариство з обмеженою відповідальністю <span class="highlight-text">"УКРАЇНСЬКИЙ ШЛЯХ МІЖНАРОДНОЇ ПРАВОВОЇ ПІДГОТОВКИ ТА КОНСУЛЬТАЦІЙ" (ТОВ "УШМІППК")</span> </div>
+        <ul class="privacy-list">
+            <li>Юридична адреса: <span class="highlight-text">04119, м. Київ, вул. Юрія Іллєнка, буд. 36/1</span></li>
+            <li>Код ЄДРПОУ: <span class="highlight-text">40143130</span></li>
+            <li>Рахунок отримувача (IBAN): <span class="highlight-text"></span>UA 77 305299 00000 26005030142077</span></li>
+            <li>Установа банку: <span class="highlight-text">АТ КБ "ПРИВАТБАНК"</span></li>
+            <li>МФО: <span class="highlight-text">305299</span></li>
+        </ul>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-left">
+            <div>© 2026 Центр підготовки до ЄДКІ</div>
+            <a href="#" class="footer-link">Політика конфіденційності</a>
+            <a href="#" class="footer-link">Договір публічної оферти</a>
+        </div>
+        <div class="footer-center">
+            <a href="mailto:centrpidgotovkidoedki@gmail.com" class="footer-link">centrpidgotovkidoedki@gmail.com</a>
+        </div>
+        <div class="footer-right">
+            <a href="https://www.tiktok.com/@pidgotovka.edki?_r=1&_d=e6m8mh09ed50jg&sec_uid=MS4wLjABAAAAGXqXA7YNQq4MFVdJJyBSWahns6QwinLNzAbNgBINC4TiQbZcdVL8UV9ubwzgdrOn&share_author_id=7604507406227538965&sharer_language=uk&source=h5_m&u_code=f2034fk9c4j5e3&timestamp=1770562620&user_id=7604507406227538965&sec_user_id=MS4wLjABAAAAGXqXA7YNQq4MFVdJJyBSWahns6QwinLNzAbNgBINC4TiQbZcdVL8UV9ubwzgdrOn&item_author_type=1&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7598792574107764501&share_link_id=e19b19a7-4c9d-44f5-944c-71f8b7341e89&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb7360&social_share_type=5&enable_checksum=1" target="_blank" rel="noopener noreferrer" class="social-link">
+                <img src="images/tiktok.png" alt="TikTok">
+            </a>
+            <a href="https://www.instagram.com/pidgotovka.edki?igsh=MTNkM2QzOGV1bmRnZA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-link">
+                <img src="images/inst.png" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/share/18FM22gDrw/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-link">
+                <img src="images/facebook.png" alt="Facebook">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        // Відкриття/закриття меню при кліку на бургер
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Закривати меню автоматично, якщо користувач клікнув на якесь посилання
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
